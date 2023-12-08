@@ -37,11 +37,32 @@ while True:
 
     # Check if the input contains only alphabets
     if new_location.replace(" ", "").isalpha():
-        break
-    
+
+        if new_location in radiation_info.keys():
+            
+            while True:
+                choice = input("\nWe already have a reading for the location you entered. Do you want to ovewrite readings? (y/n): ").lower().strip()
+
+                if choice == "y":
+                    break
+                
+                elif choice == "n":
+                    break
+
+                else:
+                    print("Need to choose between(y/n)")
+                    continue
+
+        else:
+            break
+
     else:
         print("Invlaid input! Please only use alphabets.")
         continue
+
+    if choice == "y":
+        break
+
 
 print(f"\nPlease enter 5 radiation readings of {new_location} below.")
 
@@ -64,3 +85,5 @@ radiation_info[new_location] = new_rad_readings_list
 
 # Print updated average radiation levels
 print_avg_radiation(radiation_info)
+
+# print(radiation_info)
